@@ -1,0 +1,15 @@
+**/Debug/
+**/Release/
+**/ipch/
+**/build/
+**/*tmp*
+
+*.sdf
+*.opensdf
+*.suo
+*.user
+*.VC.VC.opendb
+*.VC.db
+*.ipch
+
+RookiesEngine_D.lib

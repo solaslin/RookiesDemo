@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F121457B-B0FA-4A37-9E98-2392BFD05220}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ULS3DDemo</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)build\vc12\$(Platform)</OutDir>
+    <TargetName>$(ProjectName)_D</TargetName>
+    <IntDir>$(SolutionDir)build\vc12\$(Platform)\_tmp\$(Configuration)\$(ProjectName)\Intermediate</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)build\vc12\$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)build\vc12\$(Platform)\_tmp\$(Configuration)\$(ProjectName)\Intermediate</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\external\RookiesEngine\include;..\..\external\glew\glew-1.13.0\include;..\..\external\glfw\glfw-3.2.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>RookiesEngine_D.lib;OpenGL32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\external\glew\glew-1.13.0\lib\Release\x64;..\..\external\glfw\glfw-3.2.bin.WIN64\lib-vc2013;..\..\external\RookiesEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>COPY "$(ProjectDir)..\..\external\DLLs\vc12\x64\glew32.dll" "$(OutDir)" </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\external\RookiesEngine\include;..\..\external\glew\glew-1.13.0\include;..\..\external\glfw\glfw-3.2.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>RookiesEngine.lib;OpenGL32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\external\glew\glew-1.13.0\lib\Release\x64;..\..\external\glfw\glfw-3.2.bin.WIN64\lib-vc2013;..\..\external\RookiesEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>COPY "$(ProjectDir)..\..\external\DLLs\vc12\x64\glew32.dll" "$(OutDir)" </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\EngineDemo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\shaders\bgBlend.fs" />
+    <None Include="..\..\assets\shaders\bgBlend.vs" />
+    <None Include="..\..\assets\shaders\bgPaste.fs" />
+    <None Include="..\..\assets\shaders\bgPaste.vs" />
+    <None Include="..\..\assets\shaders\default.fs" />
+    <None Include="..\..\assets\shaders\default.vs" />
+    <None Include="..\..\assets\shaders\default_mtx.vs" />
+    <None Include="..\..\assets\shaders\default_tex.fs" />
+    <None Include="..\..\assets\shaders\default_tex.vs" />
+    <None Include="..\..\assets\shaders\defColor2D.vs" />
+    <None Include="..\..\assets\shaders\pasteScreen.vs" />
+    <None Include="..\..\assets\shaders\phong.fs" />
+    <None Include="..\..\assets\shaders\phong.vs" />
+    <None Include="..\..\assets\shaders\phong_dn.fs" />
+    <None Include="..\..\assets\shaders\phong_dn.vs" />
+    <None Include="..\..\assets\shaders\phong_dns.fs" />
+    <None Include="..\..\assets\shaders\phong_dns.vs" />
+    <None Include="..\..\assets\shaders\phong_tex.fs" />
+    <None Include="..\..\assets\shaders\phong_tex.vs" />
+    <None Include="..\..\assets\shaders\sphereRefl.fs" />
+    <None Include="..\..\assets\shaders\sphereRefl.vs" />
+    <None Include="..\..\assets\shaders\sphereRefl_Diff.fs" />
+    <None Include="..\..\assets\shaders\sphereRefl_Diff.vs" />
+    <None Include="..\..\assets\shaders\tintWorldNormal.fs" />
+    <None Include="..\..\assets\shaders\tintWorldNormal.vs" />
+    <None Include="..\..\assets\shaders\toon.fs" />
+    <None Include="..\..\assets\shaders\toon.vs" />
+    <None Include="..\..\assets\shaders\uvColor.fs" />
+    <None Include="..\..\assets\shaders\vertColor.fs" />
+    <None Include="..\..\assets\shaders\vertColor.vs" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
